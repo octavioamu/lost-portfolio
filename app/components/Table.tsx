@@ -40,7 +40,7 @@ export default async function Table() {
       <div className="grid grid-cols-4  ">
         <div className="font-bold border-b p-3">Asset</div>
         <div className="font-bold border-b p-3">Amount</div>
-        <div className="font-bold border-b p-3">Price USD</div>
+        <div className="font-bold border-b p-3 text-right">Price USD</div>
         <div className="font-bold border-b p-3 text-right">Total USD</div>
 
         {portfolio.map((asset, index) => (
@@ -50,9 +50,11 @@ export default async function Table() {
           >
             <div className="border-b p-3">{asset.symbol}</div>
             <div className="border-b p-3">
-              {asset.amount} {asset.symbol}
+              {asset.amount} <span className="text-sm">{asset.symbol}</span>
             </div>
-            <div className="border-b p-3">{convertToUSD(asset.price)}</div>
+            <div className="border-b p-3 text-right">
+              {convertToUSD(asset.price)}
+            </div>
             <div className="border-b p-3 text-right">
               {convertToUSD(asset.value)}
             </div>
